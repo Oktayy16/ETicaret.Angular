@@ -7,10 +7,13 @@ import { AdminModule } from './admin/admin.module';
 import { UiModule } from './ui/ui.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BaseComponent } from './base/base.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
   ],
   imports: [
     BrowserModule,  // bu modül olmazsa animasyonel bir şekilde geçiş yapılması imkansız olur
@@ -18,9 +21,13 @@ import { ToastrModule } from 'ngx-toastr';
     AdminModule,
     UiModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),  // bildirim modülü (ui için)
+    NgxSpinnerModule,  // Geçiş animasyonları modülü sadece bulunduğu modülde çalışıyor !!!
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide:"baseUrl", useValue:"https://localhost:7117/api", multi:true} // istek göndereceğimiz url burada tutuyoruz
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

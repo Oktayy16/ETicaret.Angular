@@ -12,15 +12,11 @@ declare var $: any // link olarak jquery ekledikten sonra burada sisteme ekledik
 export class AppComponent {
   title = 'EticaretClient';
 
-  constructor(private toastrService: CustomToastrService) {
-
-    toastrService.message("merhaba","Arslan",{
-      messageType: ToastrMessageType.Info,
-      position: ToastrPosition.TopCenter
+  constructor() {
+  
     }
-    );
-   
-  }
 }
+
+
 
 
