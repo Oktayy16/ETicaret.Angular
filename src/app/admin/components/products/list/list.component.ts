@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import {  Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
+import {  NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { List_Product } from 'src/app/base/list_product';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
@@ -19,7 +18,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   }
   
 
-  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate','updatedDate'];
+  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate','updatedDate','edit','delete'];
   dataSource : MatTableDataSource<List_Product> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -32,7 +31,14 @@ export class ListComponent extends BaseComponent implements OnInit {
     }));
     this.dataSource = new MatTableDataSource<List_Product>(allproducts.products);
     this.paginator.length = allproducts.totalCount;
-    this.dataSource.paginator = this.paginator; // pagination işlemleri burada
+  }
+
+  delete(id){
+    alert(id)
+  }
+
+  async pageChanged(){
+    await this.getProducts();
   }
 
   async ngOnInit() {
