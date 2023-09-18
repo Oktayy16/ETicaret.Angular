@@ -7,6 +7,8 @@ import { List_Product } from 'src/app/base/list_product';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
+declare var $ : any;  // jquery çağırdık
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -33,10 +35,13 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.paginator.length = allproducts.totalCount;
   }
 
-  delete(id){
-    alert(id)
+  /*
+  // silme işlemi(frontend)
+  delete(id, event  ){
+    const img: HTMLImageElement = event.srcElement;
+    $(img.parentElement.parentElement).fadeOut(2000);
   }
-
+  */
   async pageChanged(){
     await this.getProducts();
   }
