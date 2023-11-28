@@ -14,7 +14,8 @@ import {  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,  // bu modül olmazsa animasyonel bir şekilde geçiş yapılması imkansız olur
